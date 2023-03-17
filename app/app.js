@@ -8,44 +8,28 @@ submitBtn.addEventListener('click', async (e) => {
   console.log('submit button clicked!', businessField.value)
   console.log('Business field value', businessField.value)
   console.log('Email field value', emailField.value)
+  const { data } = await axios.get('https://promptable.ai/api/prompt/clf98beid12kpi7ehg8aiwjkb/deployment/active')
+  console.log(data)
 
-  const fetchBody = {
-    variables: {
-      input: emailField.value,
-      companyType: businessField.value
-    },
-    user: "carlosaugustofast@gmail.com"
-  }
+  const prompt = data.inputs?.reduce((acc, input) => {
+    // Replace input.value with your value!
+    return acc.replaceAll(`{{${input.name}}}, ${emailField.value}`)
+  }, data.text)
+  console.log(prompt)
 
-  const fetchObject = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer iAoSGx1YaW0yjG9-jj-xK"
-    },
-    body: JSON.stringify(fetchBody)
-  }
+  const res = await axios.get('https://openai.com/v1/completions', {
+    data: {
+      // your prompt
+      prompt,
 
-  try {
-    const response = await fetch(
-      "https://www.everyprompt.com/api/v0/calls/llm-workspace/email-evaluator-KJWqI6",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer iAoSGx1YaW0yjG9-jj-xK",
-        },
-        body: JSON.stringify({
-          "variables": {
-            "input": "Example",
-            "companyType": "Example"
-          },
-          "user": "carlosaugustofast@gmail.com"
-        }),
+      // your model configs from promptable
+      config: {
+        ...data.config,
+        // add any other configs here
       }
-    )
-  } catch (err) {
-    console.log(err)
-  }
-  console.log('--- api response was ---', response)
+    }
+  })
+
+  // Your completion!
+  console.log(res.data.choices[0].text)
 })
