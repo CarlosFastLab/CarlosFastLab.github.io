@@ -296,7 +296,7 @@ textarea {
 
 .card-important {
   width: 230px;
-  max-height: 300px;
+  max-height: 250px;
   padding: 0 15px 25px 15px;
   background-color: #f3d8e0;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
@@ -306,7 +306,7 @@ textarea {
 
 .card-not-important {
   width: 230px;
-  max-height: 300px;
+  max-height: 250px;
   padding: 0 15px 25px 15px;
   background-color: #d8f3eb;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
@@ -327,7 +327,7 @@ textarea {
   font-size: 15px;
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: 230px;
+  max-height: 210px;
 }
 
 .loader {
