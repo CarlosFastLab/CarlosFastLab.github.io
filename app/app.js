@@ -33,7 +33,7 @@ submitBtn.addEventListener('click', (e) => {
   }
 
   try {
-    fetch("https://www.everyprompt.com/api/v0/calls/llm-workspace/email-evaluator-KJWqI6", fetchObject)
+    fetch("https://cors-anywhere.herokuapp.com/https://www.everyprompt.com/api/v0/calls/llm-workspace/email-evaluator-KJWqI6", fetchObject)
     .then((response) => {
       response.json()
       .then((responseJson) => {
