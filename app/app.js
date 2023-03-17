@@ -2,34 +2,69 @@
 const businessField = document.getElementById('fbusiness')
 const emailField = document.getElementById('femail')
 const submitBtn = document.getElementById('submit-button')
+const cardCtr = document.getElementById('response-cards')
 
-submitBtn.addEventListener('click', async (e) => {
+function isNotImportant (text) {
+  return text.includes('NOT IMPORTANT')
+}
+
+submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
+  cardCtr.innerHTML = ''
   console.log('submit button clicked!', businessField.value)
   console.log('Business field value', businessField.value)
   console.log('Email field value', emailField.value)
-  const { data } = await axios.get('https://promptable.ai/api/prompt/clf98beid12kpi7ehg8aiwjkb/deployment/active')
-  console.log(data)
 
-  const prompt = data.inputs?.reduce((acc, input) => {
-    // Replace input.value with your value!
-    return acc.replaceAll(`{{${input.name}}}, ${emailField.value}`)
-  }, data.text)
-  console.log(prompt)
+  const fetchBody = {
+    variables: {
+      input: emailField.value,
+      companyType: businessField.value
+    },
+    user: "carlosaugustofast@gmail.com"
+  }
 
-  const res = await axios.get('https://openai.com/v1/completions', {
-    data: {
-      // your prompt
-      prompt,
+  const fetchObject = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer iAoSGx1YaW0yjG9-jj-xK",
+    },
+    body: JSON.stringify(fetchBody)
+  }
 
-      // your model configs from promptable
-      config: {
-        ...data.config,
-        // add any other configs here
-      }
-    }
-  })
-
-  // Your completion!
-  console.log(res.data.choices[0].text)
+  try {
+    fetch("https://cors-anywhere.herokuapp.com/https://www.everyprompt.com/api/v0/calls/llm-workspace/email-evaluator-KJWqI6", fetchObject)
+    .then((response) => {
+      response.json()
+      .then((responseJson) => {
+        responseJson.completions.forEach((completion) => {
+        if (isNotImportant(completion.text)) {
+          cardCtr.innerHTML += `
+          <div class="card-not-important">
+            <div class="card-header">
+              <h4>✔️ Not Important ✔️</h4>
+            </div>
+            <div class="card-body">
+              <p>${completion.text}</p>
+            </div>
+          </div>
+        `
+        } else {
+          cardCtr.innerHTML += `
+            <div class="card-important">
+              <div class="card-header">
+                <h4>❗ Important ❗</h4>
+              </div>
+              <div class="card-body">
+                <p>${completion.text}</p>
+              </div>
+            </div>
+          `
+          }
+        })
+      })
+    })
+  } catch (err) {
+    console.log(err)
+  }
 })
