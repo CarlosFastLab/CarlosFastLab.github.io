@@ -20,6 +20,18 @@
     </div>
   </header>
 
+  <div class="sidebar-trigger-button" id="sidebar-trigger-button">
+    <div class="hamburger-button"></div>
+    <div class="hamburger-button"></div>
+    <div class="hamburger-button"></div>
+  </div>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" id="sidebar-close-button">&times;</a>
+    <img class="mascot" src="./assets/mascot.png" alt="a happy 90s computer screen mascot">
+    <a href="#">About</a>
+  </div>
+
   <main>
     <h2>If it's important, Email Assistant will let you know - Powered by GPT-3!</h2>
 
@@ -34,13 +46,15 @@
           <textarea placeholder="Dear [REDACTED], this is [REDACTED] from [REDACTED]..." id="femail" name="femail" tabindex="5" required maxlength="1900"></textarea>
         </fieldset>
         <fieldset>
-          <button name="submit" type="submit" id="submit-button" data-submit="...Sending">Submit</button>
+          <button name="submit" type="submit" id="submit-button" data-submit="...Sending">Is it important?</button>
         </fieldset>
       </form>
     </div>
 
     <div class="response-cards" id="response-cards">
     </div>
+
+    <div id="snackbar">Please fill both form fields</div>
   </main>
 
   <script src="./app/app.js" type="module"></script>

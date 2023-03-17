@@ -12,6 +12,94 @@ body {
   margin: 0 auto;
 }
 
+.sidebar {
+  display: none;
+}
+
+.sidebar-trigger-button {
+  display: none;
+}
+
+@media (max-width: 590px) {
+  .nav-bar {
+    display: none;
+  }
+
+  .sidebar-trigger-button {
+    cursor: pointer;
+    display: block;
+    position: fixed;
+    background-color: #daf0f1;
+    top: 0;
+    height: 45px;
+    padding: 8px 0 0 8px;
+    width: 45px;
+  }
+
+  .hamburger-button {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
+
+  /* The sidebar menu */
+  .sidebar {
+    display: block;
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #daf0f1;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidebar */
+  }
+
+  .mascot {
+    margin-left: 25px;
+  }
+
+  /* The sidebar links */
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Open Sans";
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #64bfc4;
+  }
+
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  main {
+    padding-top: 20px;
+  }
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -65,6 +153,17 @@ h2 {
   text-align: center;
 }
 
+@media (max-width: 590px) {
+  .container {
+    max-width: 300px !important;
+    width: 100%;
+    margin: 20px auto;
+    background-color: red;
+    position: relative;
+    border-radius: 10px 10px 10px 10px;
+  }
+}
+
 .container {
   max-width: 400px;
   width: 100%;
@@ -88,7 +187,8 @@ label {
   font-size: 14px;
 }
 
-input, textarea {
+input,
+textarea {
   width: 93.6%;
   border: 1px solid #CCC;
   background: #FFF;
@@ -98,7 +198,11 @@ input, textarea {
   border-radius: 8px 8px 8px 8px;
 }
 
-#contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="tel"]:hover,
+#contact input[type="url"]:hover,
+#contact textarea:hover {
   -webkit-transition: border-color 0.3s ease-in-out;
   -moz-transition: border-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
@@ -115,6 +219,7 @@ input, textarea {
 #contact button[type="submit"] {
   cursor: pointer;
   width: 100%;
+  height: 40px;
   border: none;
   background: #4FBDC1;
   color: #FFF;
@@ -138,7 +243,17 @@ input, textarea {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-#contact input:focus, #contact textarea:focus {
+.disabled-button {
+  background-color: grey !important;
+}
+
+.disabled-button:hover {
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+}
+
+#contact input:focus,
+#contact textarea:focus {
   outline: 0;
   border: 1px solid #999;
 }
@@ -164,6 +279,16 @@ input, textarea {
   display: flex;
   width: 900px;
   justify-content: space-around;
+}
+
+@media (max-width: 910px) {
+  .response-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 850px;
+  }
 }
 
 .card-important {
@@ -200,4 +325,113 @@ input, textarea {
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 230px;
+}
+
+.loader {
+  width: 22px;
+  height: 22px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  font-family: "Open Sans";
+  visibility: hidden;
+  /* Hidden by default. Visible on click */
+  min-width: 250px;
+  /* Set a default minimum width */
+  margin-left: -125px;
+  /* Divide value of min-width by 2 */
+  background-color: #333;
+  /* Black background color */
+  color: #fff;
+  /* White text color */
+  text-align: center;
+  /* Centered text */
+  border-radius: 2px;
+  /* Rounded borders */
+  padding: 16px;
+  /* Padding */
+  position: fixed;
+  /* Sit on top of the screen */
+  z-index: 1;
+  /* Add a z-index if needed */
+  left: 50%;
+  /* Center the snackbar */
+  bottom: 30px;
+  /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible;
+  /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
