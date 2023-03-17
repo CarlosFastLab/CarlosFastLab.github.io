@@ -20,7 +20,7 @@ submitBtn.addEventListener('click', (e) => {
       input: emailField.value,
       companyType: businessField.value
     },
-    user: "testing"
+    user: "carlosaugustofast@gmail.com"
   }
 
   const fetchObject = {
