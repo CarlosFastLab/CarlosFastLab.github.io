@@ -20,7 +20,7 @@ submitBtn.addEventListener('click', (e) => {
       input: emailField.value,
       companyType: businessField.value
     },
-    user: "carlosaugustofast@gmail.com"
+    user: "testing"
   }
 
   const fetchObject = {
@@ -33,7 +33,7 @@ submitBtn.addEventListener('click', (e) => {
   }
 
   try {
-    fetch("https://cors-anywhere.herokuapp.com/https://www.everyprompt.com/api/v0/calls/llm-workspace/email-evaluator-KJWqI6", fetchObject)
+    fetch("https://www.everyprompt.com/api/v0/calls/llm-workspace/email-evaluator-KJWqI6", fetchObject)
     .then((response) => {
       response.json()
       .then((responseJson) => {
