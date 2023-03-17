@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles/index.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+</head>
+<body>
+  <header class="nav-bar">
+    <div class="logo">
+      <img class="mascot" src="./assets/mascot.png" alt="a happy 90s computer screen mascot">
+      <h3>Email Evaluator</h3>
+    </div>
+    <div class="links">
+      <a class="about-btn" href="./about.html">About</a>
+    </div>
+  </header>
+
+  <main>
+    <h2>OpenAI powered email checker: Check if that email is important or not!</h2>
+
+    <div class="container">
+      <form id="contact">
+        <fieldset>
+          <label for="fbusiness">Business field</label>
+          <input placeholder="Software company" id="fbusiness" name="fbusiness" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+          <label for="">Email text (make sure to redact sensitive information!)</label>
+          <textarea placeholder="Dear [REDACTED], this is [REDACTED] from [REDACTED]..." id="femail" name="femail" tabindex="5" required maxlength="1900"></textarea>
+        </fieldset>
+        <fieldset>
+          <button name="submit" type="submit" id="submit-button" data-submit="...Sending">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="response-cards">
+      <div class="card">
+        <div class="card-header">
+          <h4>❗ Important ❗</h4>
+        </div>
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis neque sed turpis mollis, vel rutrum lectus lobortis. Nulla nec tempus magna. Sed egestas, nibh at elementum viverra, diam eros luctus sem, ac eleifend neque eros sed dui. Integer non rhoncus eros. Integer vel ex lobortis, gravida quam sed, dignissim elit. Praesent dui lectus, congue sed nibh at, dapibus sodales est. Ut sit amet odio egestas, maximus erat sed, bibendum magna. Nunc eu sapien nec odio consequat sodales nec eu nulla. Nam vestibulum, libero vitae suscipit malesuada, erat quam tincidunt risus, eget dignissim enim nunc ut tortor. Quisque ut neque aliquet, tempus est vitae, condimentum nunc. Integer pellentesque vulputate quam vel porta. Ut cursus nec nisi efficitur sollicitudin. Nulla sed odio tempus erat condimentum varius ut ac sapien. Suspendisse vestibulum venenatis hendrerit. Ut sed suscipit quam.
+
+            Maecenas sit amet luctus est. Aliquam eget venenatis turpis. Integer in facilisis elit. Pellentesque eget neque ante. Morbi lobortis aliquet ligula. Proin est ante, consequat et justo ac, volutpat rutrum diam. Curabitur ante ligula, eleifend et ipsum id, vehicula imperdiet ex. Aenean mattis felis nec tellus pretium, vel ultricies nibh ultrices. Proin nec sem sem. Maecenas pharetra augue at lobortis molestie. Mauris id eleifend dolor.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4>❗ Important ❗</h4>
+        </div>
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim massa eu arcu mollis, in egestas metus vehicula. Cras sit amet finibus lectus. Donec elementum nisi id nisi cursus, eget semper erat viverra. Nunc condimentum ut felis et tristique.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h4>❗ Important ❗</h4>
+        </div>
+        <div class="card-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim massa eu arcu mollis, in egestas metus vehicula. Cras sit amet finibus lectus. Donec elementum nisi id nisi cursus, eget semper erat viverra. Nunc condimentum ut felis et tristique.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./app/app.js"></script>
+</body>
+</html>
